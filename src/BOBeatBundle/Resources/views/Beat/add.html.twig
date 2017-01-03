@@ -1,0 +1,21 @@
+{% extends 'baseform.html.twig' %}
+
+{% block title %} add beat {% endblock %}
+{% block title_page %} Ajouter un beat {% endblock %}
+
+{% block body %}
+
+{{ form_start(form) }}
+
+{{ form_errors(form) }}
+
+<div class="form-group" >
+{{ form_row(form.name) }}
+{{ form_row(form.songFile) }}
+{{ form_row(form.category) }}
+{{ form_widget(form.save, {'attr':{'class':'btn btn-primary'}} ) }}
+</div>
+
+{{ form_end(form) }}
+
+{% endblock %}

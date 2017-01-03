@@ -1,0 +1,348 @@
+<!--
+ - sPlayer - Super HTML5 Music Player
+ - Custom Styles: style + albums + genres
+ - Fonts: Roboto by Google
+ - Libraries: JQuery 2.1.4
+ - Built on: sPlayer JavaScript Audio Library
+ - Copyright: 2015-2016 Manar Kamel (manarkamel.github.io)
+<- ========================================================= -->
+
+
+<!DOCTYPE HTML>
+<html manifest="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Site bolero</title>
+    
+    <meta name="viewport" content="width=1366">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="copyright" content="Manar Kamel - All Rights Reserved">
+      <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css')}}" />
+    <link type="text/css" rel="stylesheet" href="css/styles/style.css">
+    <link type="text/css" rel="stylesheet" href="css/albums.css">
+    <link type="text/css" rel="stylesheet" href="css/styles/genres.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+     <link rel="stylesheet" href="{{ asset('css/animate.css')}}" />
+  <link rel="stylesheet" href="{{ asset('css/style.css')}}" />
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body class="discover">
+<div class="navbar-wrapper ">
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-fixed-top fadeInDown" role="navigation" id="top-nav">
+          <div class="container">
+            <div class="navbar-header">
+              <!-- Logo Starts -->
+              <a class="navbar-brand" href="home"><img src="{{ asset('images/logo.png')}}" height="30" alt="logo"/></a>
+              <!-- Logo Ends -->
+
+
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+            </div>
+
+
+            <!-- Nav Starts -->
+            <div class="navbar-collapse  collapse">
+              <ul class="nav navbar-nav navbar-right" >
+                 
+              <li class="active"><a href="{{ path('bo_beat_homepage') }}">Home</a></li>
+              <li><a href="{{ path('bo_beat_beatpage') }}">Beats </a> </li> 
+              <li><a href="{{ path('bo_beat_contactpage') }}">Contact</a></li>
+             
+              </ul>
+            </div>
+            <!-- Nav Ends -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+     <div id="box">
+        <div class="bgCont">
+            <div class="bg">
+                <div class="genreArt"></div>
+            </div>
+        </div>
+        <div class="bg-lyr">
+            <div class="header">
+                <div class="menu-ico">
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="search">
+                    <label for="search" class="search-ico">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="27.977px" height="27.977px" viewBox="0 0 27.977 27.977" style="enable-background:new 0 0 27.977 27.977;" xml:space="preserve">
+                            <g id="Search_-_Line.svg">
+                                <g>
+                                    <path style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff;" d="M17.837,17.124c1.714-1.888,2.663-4.305,2.663-6.873
+                                        c0-2.738-1.067-5.312-3.003-7.248S12.986,0,10.247,0c-2.739,0-5.313,1.067-7.25,3.002c-3.997,3.996-3.997,10.5,0,14.496
+                                        c1.936,1.936,4.511,3.002,7.25,3.002c2.568,0,4.986-0.948,6.874-2.662l10.14,10.138l0.715-0.715L17.837,17.124z M16.781,16.784
+                                        c-1.746,1.745-4.066,2.706-6.534,2.706c-2.469,0-4.789-0.961-6.534-2.706c-3.603-3.603-3.603-9.464,0-13.066
+                                        c1.745-1.745,4.066-2.706,6.534-2.706c2.468,0,4.788,0.961,6.534,2.706c1.745,1.745,2.707,4.065,2.707,6.533
+                                        C19.488,12.719,18.527,15.038,16.781,16.784z" />
+                                </g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                            <g>
+                            </g>
+                        </svg>
+                    </label>
+                    <input type="text" name="search" id="search" placeholder="Search music" autocomplete="off" />
+                </div>
+                <div id="title" class="discover">
+                    <ul>
+                
+                    {% for category in categories %}
+                        <li class="{{ category.Name }} {% if loop.index is even %} active {% endif %}"> {{ category.Name }} </li>
+                       
+                    {% endfor %}
+                       
+                    </ul>
+                    <p id="genreTitle"></p>
+                    <p id="pageTitle"></p>
+                </div>
+                <div class="more">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="29.007px" height="14.982px" viewBox="0 0 29.007 14.982" style="enable-background:new 0 0 29.007 14.982;" xml:space="preserve">
+                        <g id="Arrow_-_Right.svg">
+                            <g>
+                                <polygon style="fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;" points="21.612,0 20.908,0.713 27.101,6.986 0,6.986 0,7.995 
+            27.101,7.995 20.908,14.268 21.612,14.982 29.007,7.491       "></polygon>
+                            </g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="menu">
+                <ul class="menu-list">
+                    <li class="discover-li active">
+                        <div class="content-ico">
+                            <div class="ico-left">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="33.003px" height="20.007px" viewBox="0 0 33.003 20.007" style="enable-background:new 0 0 33.003 20.007;" xml:space="preserve">
+                                    <g id="Eye.svg">
+                                        <g>
+                                            <path style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff;" d="M32.78,9.706C32.483,9.309,25.419,0,16.501,0
+                                                        S0.52,9.309,0.223,9.706L0,10.004l0.223,0.298c0.297,0.396,7.36,9.705,16.278,9.705s15.982-9.309,16.278-9.705l0.223-0.298
+                                                        L32.78,9.706z M16.501,19.011c-7.549,0-13.955-7.415-15.244-9.007c1.287-1.593,7.688-9.008,15.244-9.008
+                                                        c7.549,0,13.955,7.416,15.244,9.008C30.458,11.597,24.057,19.011,16.501,19.011z M16.501,2.542c-4.124,0-7.478,3.347-7.478,7.462
+                                                        c0,4.114,3.354,7.461,7.478,7.461s7.478-3.347,7.478-7.461C23.98,5.889,20.625,2.542,16.501,2.542z M16.501,16.469
+                                                        c-3.573,0-6.48-2.899-6.48-6.464c0-3.565,2.907-6.465,6.48-6.465s6.48,2.9,6.48,6.465C22.981,13.569,20.074,16.469,16.501,16.469z
+                                                        " />
+                                        </g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <span>Discover</span>
+                    </li>
+                   
+                   
+                </ul>
+                
+                <div class="results-list">
+                    <p id="noresults">No results found</p>
+                    <ul>
+                        
+                    </ul>
+                </div>
+                <div class="menu-bar">
+                    <img src="images/logo.PNG" width="69" height="33" alt="sPlayer">
+                </div>
+            </div>
+            <div class="content discover selected">
+            {% for category in categories %}
+                <div class="tab {{ category.Name }} {% if loop.index is even %} active {% endif %}">
+                {% for beat in category.Beats %}
+                    <div class="album {{ beat.Name }}">
+                        <div class="art"></div>
+                        <div class="info">
+                            <h1>{{ beat.Name }}</h1>
+                            <p>{{ beat.Name }}</p>
+                        </div>
+                    </div>
+
+                    
+                    
+                    <div class="album-content {{ beat.Name }}">
+                        <div class="album-large">
+                            <div class="art"></div>
+                        </div>
+                        <div class="songs">
+                            <h1>{{ beat.Name }}</h1>
+                            <ul class="songs-list">
+                                <li id="{{ beat.Id }}" data-song="songs/bolero/{{ beat.SongName }}"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
+                                    <p>{{ beat.SongName }}</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                    </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% endfor %}
+
+
+            </div>
+            
+            
+            <div class="bottom">
+                <div class="controls" id="playerJS">
+                    <div id="currentNP">
+                        <div id="bottomArt"></div>
+                    </div>
+                    <!-- not backwards-btn or reverse it's actually previous-btn, it will be fixed soon -->
+                    <div class="prev-btn c-btn np-btn">
+                        <img src="images/svg/reverse_filled.svg">
+                    </div>
+                    <div class="play-btn c-btn" id="playBtn">
+                        <img src="images/svg/play_filled.svg" class="notplaying">
+                        <img src="images/svg/pause_filled.svg" class="playing">
+                    </div>
+                    <div class="next-btn c-btn np-btn">
+                        <img src="images/svg/forward_filled.svg">
+                    </div>
+                    <div class="current-time s-time">0:00</div>
+                    <div class="slider">
+                        <input id="slider" type="range" value="0" max="">
+                        <div class="sliderBg"></div>
+                    </div>
+                    <div class="song-length s-time">0:00</div>
+
+                    <div class="loop-btn o-btn">
+                        <img src="images/svg/loop_off.svg" class="notlooped">
+                        <img src="images/svg/loop_on.svg" class="looped">
+                    </div>
+                   
+                    
+                    <!-- this more-btn for mobile ui only -->
+                    <div class="more-btn">
+                        <img src="images/svg/more_line.svg">
+                        <div class="close-btn">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+   
+
+    <script src="scripts/lib/jquery-2.1.4.min.js"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.js')}}" type="text/javascript" ></script>
+    
+    <script type="text/javascript" src="scripts/dist/sconfig.min.js"></script>
+    <script type="text/javascript" src="scripts/dist/splayer.min.js"></script>
+    
+    <script type="text/javascript" src="scripts/main.js"></script>
+    <script type="text/javascript" src="scripts/other.js"></script>
+    
+
+
+</body>
+
+</html>

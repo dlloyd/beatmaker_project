@@ -1,0 +1,125 @@
+<?php
+
+namespace BOBeatBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Beat
+ *
+ * @ORM\Table(name="beat")
+ * @ORM\Entity(repositoryClass="BOBeatBundle\Repository\BeatRepository")
+ */
+class Beat
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=255, unique=true)
+     */
+    private $link;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="BOBeatBundle\Entity\Category", inversedBy="beats")
+     *@ORM\JoinColumn(nullable=false)
+    */
+    private $category_id;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     * @return Beat
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string 
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Beat
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    
+
+    /**
+     * Set category_id
+     *
+     * @param \BOBeatBundle\Entity\Category $categoryId
+     * @return Beat
+     */
+    public function setCategoryId(\BOBeatBundle\Entity\Category $categoryId)
+    {
+        $this->category_id = $categoryId;
+
+        return $this;
+    }
+
+    /**
+     * Get category_id
+     *
+     * @return \BOBeatBundle\Entity\Category 
+     */
+    public function getCategoryId()
+    {
+        return $this->category_id;
+    }
+}

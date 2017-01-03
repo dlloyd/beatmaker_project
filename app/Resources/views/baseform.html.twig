@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title> {% block title %} Connexion {% endblock %} </title>
+
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css')}}" />  
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/cover.css') }}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand"> {% block title_page %} Connexion {% endblock %}</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="{{ path('bo_beat_homepage') }}">Home</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          {% block body %}
+
+          {% endblock %}
+
+         
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+     <script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript" ></script>
+  <!-- boostrap -->
+  <script src="{{ asset('bootstrap/js/bootstrap.js')}}" type="text/javascript" ></script>
+  </body>
+</html>

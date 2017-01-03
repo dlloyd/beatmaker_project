@@ -1,0 +1,21 @@
+bo_beat_homepage:
+    path:     /
+    defaults: { _controller: BOBeatBundle:Beat:index }
+
+bo_beat_contactpage:
+    path:    /contact 
+    defaults: { _controller: BOBeatBundle:Beat:contact }
+
+bo_beat_beatpage:
+    path:    /beats 
+    defaults: { _controller: BOBeatBundle:Beat:beat }
+
+bo_beat_addbeat:
+    path:    /admin/beat 
+    defaults: { _controller: BOBeatBundle:Beat:add }
+
+bo_beat_addcateg:
+    path:    /admin/category
+    defaults: { _controller: BOBeatBundle:Category:add }
+
+

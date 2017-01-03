@@ -1,0 +1,19 @@
+{% extends 'baseform.html.twig' %}
+
+{% block title %} add categorie {% endblock %}
+{% block title_page %} Ajouter une categorie {% endblock %}
+
+
+{% block body %}
+
+{{ form_start(form) }}
+
+{{ form_errors(form) }}
+
+{{ form_row(form.name) }}
+{{ form_widget(form.save, {'attr':{'class':'btn btn-primary'}} ) }}
+
+{{ form_end(form) }}
+
+
+{% endblock %}
