@@ -1,0 +1,17 @@
+BOShopBundle\Entity\Commande:
+    type: entity
+    table: null
+    repositoryClass: BOShopBundle\Repository\CommandeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        date:
+            type: date
+        state:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

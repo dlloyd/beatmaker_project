@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new BOBeatBundle\BOBeatBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new BOUserBundle\BOUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new BOShopBundle\BOShopBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

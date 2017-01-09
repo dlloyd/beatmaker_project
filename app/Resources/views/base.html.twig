@@ -40,12 +40,26 @@
 
 
            <!-- Nav Starts -->
+           {% set cPath = path(app.request.attributes.get('_route'),
+                           app.request.attributes.get('_route_params')) %}
             <div class="navbar-collapse  collapse">
               <ul class="nav navbar-nav navbar-right" >
                  
-              <li class="active"><a href="{{ path('bo_beat_homepage') }}">Home</a></li>
+             {% if cPath == path('bo_beat_homepage') %} <li class="active"> {% else %} <li> {% endif %}<a href="{{ path('bo_beat_homepage') }}">Home</a></li>
+
               <li><a href="{{ path('bo_beat_beatpage') }}">Beats </a> </li> 
-              <li><a href="{{ path('bo_beat_contactpage') }}">Contact</a></li>
+
+              {% if cPath == path('bo_beat_contactpage') %} <li class="active"> {% else %} <li> {% endif %}<a href="{{ path('bo_beat_contactpage') }}">Contact</a></li>
+
+              {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+              <li><a href="{{ path('fos_user_security_logout') }}"> Logout </a></li>
+
+              {% else %}
+              
+              {% if cPath == path('fos_user_security_login') %} <li class="active"> {% else %} <li> {% endif %}<a href="{{ path('fos_user_security_login') }}"> Login </a></li>
+              {% endif %}
+
+              {% if cPath == path('bo_shop_cart') %} <li class="active"> {% else %} <li> {% endif %}<a href="{{ path('bo_shop_cart') }}"> <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
              
               </ul>
             </div>

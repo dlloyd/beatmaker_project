@@ -33,7 +33,7 @@ class Category
 
 
     /**
-     *@ORM\OneToMany(targetEntity="BOBeatBundle\Entity\Beat", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="BOBeatBundle\Entity\Beat", mappedBy="category")
     */
     private $beats;
 

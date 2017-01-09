@@ -1,0 +1,98 @@
+<?php
+
+namespace BOShopBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * commande
+ */
+class Commande
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     */
+    private $date;
+
+    /**
+     * @var string
+     */
+    private $state;
+
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="BOUserBundle\Entity\User", inversedBy="commandes")
+     * @ORM\JoinColumn(nullable=false)
+    */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="BOBeatBundle\Entity\Beat")
+     * @ORM\JoinColumn(nullable=false)
+    */
+    private $beat;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return commande
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set state
+     *
+     * @param string $state
+     *
+     * @return commande
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+}

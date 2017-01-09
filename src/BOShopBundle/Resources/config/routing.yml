@@ -1,0 +1,19 @@
+bo_shop_homepage:
+    path:     /shop
+    defaults: { _controller: BOShopBundle:Default:index }
+
+bo_shop_cart:
+    path: /cart
+    defaults: { _controller: BOShopBundle:Cart:index }
+
+bo_shop_delcart:
+    path:     /cart/delAll/
+    defaults: { _controller: BOShopBundle:Cart:delAllPanier }
+
+bo_shop_delsongcart:
+    path:     /cart/del/{id}
+    defaults: { _controller: BOShopBundle:Cart:remove }
+
+bo_shop_addincart:
+    path:     /cart/add/{id}
+    defaults: { _controller: BOShopBundle:Cart:add }

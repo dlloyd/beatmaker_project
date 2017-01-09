@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} cart {% endblock %}
+
+{% block beat_body %}
+
+
+
+<div class="blockblack" >
+
+<br/><br/> <br/><br/> 
+{% if liste is not empty %}
+<div class="table-responsive">
+  <table class="table">
+   <thead>
+      <tr>
+        <th>Id</th>
+        <th>Beat Name</th>
+        <th> Price </th>
+        <th> Delete </th>
+      </tr>
+    </thead>
+    <tbody>
+
+{% for li in liste %}
+      <tr>
+        <td>{{li.id}}</td>
+        <td>{{ li.name }} </td>
+        <td> </td>
+        <td> <a href="/cart/del/{{ li.id }}" > <span class="glyphicon glyphicon-remove-sign">  </span></a></td>
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<br/>
+
+<h2> Total: </h2> XX <span class="glyphicon glyphicon-euro">  </span> 
+<h2> Buy now </h2>  
+{% else %}
+ <h2> Your card is empty </h2>
+{% endif %}
+</div>
+{% endblock %}
+
+
+
+      
+    

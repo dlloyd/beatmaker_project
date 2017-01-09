@@ -1,0 +1,37 @@
+<?php
+
+namespace BOUserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="BOUserBundle\Repository\UserRepository")
+ */
+class User extends BaseUser
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+    * @ORM\OneToMany(targetEntity="BOShopBundle\Entity\Commande", mappedBy="user")
+    */
+    private $commandes;
+
+    public function _construct()
+    {
+        parent::__construct();
+        $this->roles= array( 'ROLE_USER' );
+    }
+
+}
+
