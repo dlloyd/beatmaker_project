@@ -1,6 +1,6 @@
 bo_shop_homepage:
-    path:     /shop
-    defaults: { _controller: BOShopBundle:Default:index }
+    path:     /purchases
+    defaults: { _controller: BOShopBundle:Shop:index }
 
 bo_shop_cart:
     path: /cart

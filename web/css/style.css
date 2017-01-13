@@ -22,7 +22,6 @@ blockquote {padding: 0px 20px;margin: 0 0 20px;border-left: 5px solid #aaa;font-
 .thumbnail{ background-color:#fff;}
 
 
-
 /*home*/
 .homeinfo{padding:100px 0 20px 0;}
 .homeinfo .player{margin-top: 70px;position: relative;}
@@ -39,7 +38,8 @@ blockquote {padding: 0px 20px;margin: 0 0 20px;border-left: 5px solid #aaa;font-
 .bgcolor{background-color: #f2ab00;}
 .textcolor{color: #f2ab00;}
 a{color:#f2ab00; text-decoration:none}
-a:hover{color:#fff;text-decoration:none}
+a:hover{color:#f2ab00;text-decoration:none}
+a:visited{color:#f2ab00;text-decoration: :none;}
 /*color*/
 
 

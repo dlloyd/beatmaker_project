@@ -52,6 +52,7 @@
               {% if cPath == path('bo_beat_contactpage') %} <li class="active"> {% else %} <li> {% endif %}<a href="{{ path('bo_beat_contactpage') }}">Contact</a></li>
 
               {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+              <li><a href="{{ path('bo_shop_homepage') }}"> My purchases </a></li>
               <li><a href="{{ path('fos_user_security_logout') }}"> Logout </a></li>
 
               {% else %}

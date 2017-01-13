@@ -5,22 +5,32 @@ namespace BOShopBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * commande
+ * Commande
+ *
+ * @ORM\Table(name="commande")
+ * @ORM\Entity(repositoryClass="BOShopBundle\Repository\CommandeRepository")
  */
 class Commande
 {
     /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-    /**
+
+     /**
      * @var \DateTime
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 
     /**
      * @var string
+     * @ORM\Column(name="state", type="string", length=255, unique=false)
      */
     private $state;
 
@@ -47,52 +57,6 @@ class Commande
     {
         return $this->id;
     }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return commande
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * Set state
-     *
-     * @param string $state
-     *
-     * @return commande
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Get state
-     *
-     * @return string
-     */
-    public function getState()
-    {
-        return $this->state;
-    }
 }
+
+

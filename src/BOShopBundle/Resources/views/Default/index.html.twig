@@ -1,1 +1,45 @@
-Hello World!
+{% extends 'base.html.twig' %}
+
+{% block title %} Purchases {% endblock %}
+
+{% block beat_body %}
+
+
+
+<div class="blockblack" >
+<br/><br/> <br/><br/> 
+{% if commands is not empty %}
+<div class="table-responsive">
+  <table class="table">
+   <thead>
+      <tr>
+        <th>Id</th>
+        <th>Beat Name</th>
+        <th> Download </th>
+      </tr>
+    </thead>
+    <tbody>
+
+{% for cmd in commands %}
+      <tr>
+        <td>{{cmd.id}}</td>
+        <td>{{ cmd.name }} </td>
+        <td> <span class="glyphicon glyphicon-save" > </span> </td>
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% else %}
+ <h2> No purchase </h2>
+{% endif %}
+
+</div>
+{% endblock %}
+
+
+
+
+      
+    

@@ -53,11 +53,13 @@
               <li class="active"><a href="{{ path('bo_beat_beatpage') }}">Beats </a> </li> 
               <li><a href="{{ path('bo_beat_contactpage') }}">Contact</a></li>
               {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+              <li><a href="{{ path('bo_shop_homepage') }}"> My purchases </a></li>
               <li><a href="{{ path('fos_user_security_logout') }}"> Logout </a></li>
               {% else %}
               <li><a href="{{ path('fos_user_security_login') }}"> Login </a></li>
               {% endif %}
               <li><a href="{{ path('bo_shop_cart') }}"> <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+              <span class="glyphicon glyphicon-ok-sign" style="display:none;color:#f4e209">Added</span>
              
               </ul>
             </div>
@@ -269,7 +271,8 @@
                             <h1>{{ beat.Name }}</h1>
                             <ul class="songs-list">
                                 <li id="{{ beat.Id }}" data-song="songs/bolero/{{ beat.SongName }}"><span><i>1</i> <img src="images/svg/pause_line.svg" class="playing"><img src="images/svg/play_line.svg" class="notplaying"></span>
-                                    <p>{{ beat.SongName }}</p><span class="float-r saveit"><img src="images/svg/star_line.svg" class="notstarred"> <img src="images/svg/star_filled.svg" class="starred"></span>
+                                    <p>{{ beat.SongName }}</p>
+                                    <span class="float-r downloadit"><a href="/cart/add/{{ beat.Id }}" onclick="return false"><img src="images/svg/star_line.svg" class="notdownloaded"> <img src="images/svg/star_filled.svg" class="downloaded"> Add </a></span></li>
                                     </li>
                                 
                             </ul>
@@ -337,6 +340,16 @@
     
     <script type="text/javascript" src="{{ asset('scripts/main.js')}}"></script>
     <script type="text/javascript" src="{{ asset('scripts/other.js')}}"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.downloadit a').click(function(){
+             $.get($(this).attr('href'));
+             $(".glyphicon-ok-sign").fadeIn();
+             $(".glyphicon-ok-sign").fadeOut(2000);
+        });
+    });
+    </script>
     
 
 

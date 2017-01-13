@@ -1,0 +1,36 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+
+{% block fos_user_content %}
+<div class="col-md-4">
+<form action="{{ path("fos_user_security_check") }}" method="post">
+        <h2 class="form-signin-heading"> Login </h2>
+        <hr>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <label class="sr-only" for="username">{{ 'security.login.username'|trans }}</label>
+        <input class="form-control"  type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        <label class="sr-only" for="password">{{ 'security.login.password'|trans }}</label>
+        <input class="form-control" type="password" id="password" name="_password" required="required" placeholder="Password" />
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <label for="remember_me">Remember me</label>
+            </label>
+        </div>
+        <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="Submit" />
+    </form>
+    <br>
+    <a href="{{ path('fos_user_resetting_request') }}" class="btn btn-danger">Forgot account?</a>
+</div>
+<div class="col-md-2"></div>
+<div class="col-md-3">
+    <h2>Signup</h2>
+    <hr>
+    <em>
+         YOUR WELCOME TO SIGNUP<br />
+    </em>
+    <br /><br />
+    <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">Signup</a>
+</div>
+
+{% endblock fos_user_content %}

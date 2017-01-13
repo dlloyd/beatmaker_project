@@ -5,22 +5,32 @@ namespace BOShopBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * commande
+ * Commande
+ *
+ * @ORM\Table(name="commande")
+ * @ORM\Entity(repositoryClass="BOShopBundle\Repository\CommandeRepository")
  */
 class Commande
 {
     /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-    /**
+
+     /**
      * @var \DateTime
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 
     /**
      * @var string
+     * @ORM\Column(name="state", type="string", length=255, unique=false)
      */
     private $state;
 
@@ -53,7 +63,7 @@ class Commande
      *
      * @param \DateTime $date
      *
-     * @return commande
+     * @return Commande
      */
     public function setDate($date)
     {
@@ -77,7 +87,7 @@ class Commande
      *
      * @param string $state
      *
-     * @return commande
+     * @return Commande
      */
     public function setState($state)
     {
@@ -96,11 +106,11 @@ class Commande
         return $this->state;
     }
 
-
-     /**
+    /**
      * Set user
      *
      * @param \BOUserBundle\Entity\User $user
+     *
      * @return Commande
      */
     public function setUser(\BOUserBundle\Entity\User $user)
@@ -120,10 +130,11 @@ class Commande
         return $this->user;
     }
 
- /**
+    /**
      * Set beat
      *
      * @param \BOBeatBundle\Entity\Beat $beat
+     *
      * @return Commande
      */
     public function setBeat(\BOBeatBundle\Entity\Beat $beat)
@@ -134,14 +145,12 @@ class Commande
     }
 
     /**
-     * Get user
+     * Get beat
      *
-     * @return \BOBeatBundle\Entity\Beat 
+     * @return \BOBeatBundle\Entity\Beat
      */
     public function getBeat()
     {
         return $this->beat;
     }
-
-
 }

@@ -27,11 +27,45 @@ class User extends BaseUser
     */
     private $commandes;
 
+
     public function _construct()
     {
         parent::__construct();
         $this->roles= array( 'ROLE_USER' );
     }
 
-}
 
+    /**
+     * Add commande
+     *
+     * @param \BOShopBundle\Entity\Commande $commande
+     *
+     * @return User
+     */
+    public function addCommande(\BOShopBundle\Entity\Commande $commande)
+    {
+        $this->commandes[] = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Remove commande
+     *
+     * @param \BOShopBundle\Entity\Commande $commande
+     */
+    public function removeCommande(\BOShopBundle\Entity\Commande $commande)
+    {
+        $this->commandes->removeElement($commande);
+    }
+
+    /**
+     * Get commandes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommandes()
+    {
+        return $this->commandes;
+    }
+}
